@@ -1,0 +1,11 @@
+body {
+    margin:0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif, Arial;
+}
+
+@media(min-width:1200px) {
+    .container {
+        width: 930px;
+        margin: 0 auto;
+    }
+}
