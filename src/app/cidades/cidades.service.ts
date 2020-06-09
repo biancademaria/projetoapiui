@@ -40,4 +40,11 @@ export class CidadesService {
       return resultado;
     });
   }
+
+  excluir(id: number): Promise<void> {
+    return this.http.delete(`${this.cidadesUrl}/${id}`)
+    .toPromise()
+    .then(() => null);
+  }
+
 }

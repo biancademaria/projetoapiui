@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="ui-g">
+        <form autocomplete="off" (ngSubmit)="pesquisar()">
+            <div class="ui-g-12">
+                <h1>Clientes</h1>
+            </div>
+
+            <div class="ui-g-8 ui-fluid">
+                <label>Dados do Cliente</label>
+                <input type="text" pInputText name="nome" [(ngModel)]="filtro.nome" />
+            </div>
+
+            <div class="ui-g-12">
+                <button pButton type="submit" label="Pesquisar"></button>
+            </div>
+        </form>
+    </div>
+
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <p-table [value]="clientes"
+                     [paginator]="true"
+                     [rows]="filtro.itensPorPagina"
+                     [totalRecords]="totalRegistros"
+                     [lazy]="true"
+                     [responsive]="true"
+                     (onLazyLoad)="aoMudarPagina($event)">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th class="col-id-header">#</th>
+                        <th>Nome do Cliente</th>
+                        <th class="col-telefone-header">Telefone</th>
+                        <th class="col-cidade-header">Cidade</th>
+                        <th class="col-acoes-header">Ações</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-cli>
+                    <tr>
+                        <td class="col-id">{{ cli.id_cliente }}</td>
+                        <td>{{ cli.nome }}</td>
+                        <td class="col-telefone">{{ cli.telefone }}</td>
+                        <td class="col-cidade"> {{ cli.cidade }} </td>
+                        <td>
+                            <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
+                            <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="4"> 
+                            Ops! Nenhum cliente foi encontrado :( 
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>
