@@ -1,0 +1,35 @@
+<div class="container">
+    <form autocomplete="off" (ngSubmit)="salvar()" [formGroup]="formulario">
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <h1>Cadastro de Cidades</h1>
+            </div>
+
+            <div class="ui-g-12 ui-md-9 ui-fluid">
+                <label>Nome da cidade:</label>
+                <input pInputText type="text" name="nome" formControlName="nome">
+
+                <app-message [control]="formulario.get('nome')" error="required" text="Para adicionar uma cidade, é preciso inserir o nome dessa cidade! Parece que você não preencheu esse campo."></app-message>
+                <app-message [control]="formulario.get('nome')" error="minLength" text="Esse campo só aceita cidades com mais de 5 caracteres!"></app-message>
+
+            </div>
+
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Estado da cidade:</label>
+                <input pInputText type="text" name="estado" formControlName="estado">
+                
+                <app-message [control]="formulario.get('estado')" error="required" text="Para adicionar uma cidade, é preciso inserir o estado dessa cidade! Parece que você não preencheu esse campo."></app-message>
+                <app-message [control]="formulario.get('estado')" error="maxLength" text="Adicione apenas a sigla do Estado, com 2 caracteres! Exemplo: São Paulo (insira SP)."></app-message>
+
+
+            </div>
+
+            <div class="ui-g-12">
+                <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid"></button>
+                <button pButton type="button" label="Novo"></button>
+
+                <a routerLink="/cidades">Voltar para a pesquisa.</a>
+            </div>
+        </div>
+    </form>
+</div>

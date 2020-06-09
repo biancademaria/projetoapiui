@@ -13,9 +13,12 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CidadesCadastroComponent } from './cidades/cidades-cadastro/cidades-cadastro.component';
 
 const routes: Routes = [
-  {path: 'cidades', component: CidadesPesquisaComponent}
+  {path: 'cidades', component: CidadesPesquisaComponent},
+  {path: 'cidades/novo', component: CidadesCadastroComponent}
+
 ]
 
 @NgModule({
